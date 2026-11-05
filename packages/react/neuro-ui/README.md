@@ -20,7 +20,7 @@ npm run pack:ui
 如果系统仍使用 npm 10，可用 `npx --yes npm@11 ci` 安装，不需要修改全局 npm。打包会生成 `neuro-ui-0.1.1.tgz`，将它作为内部依赖安装到应用：
 
 ```powershell
-npm install C:/Users/Public/nas_home/AwesomeDesignMD/neuro-ui-0.1.1.tgz
+npm install C:/Users/Public/nas_home/NeuroDesign/neuro-ui-0.1.1.tgz
 ```
 
 包内包含 ESM、TypeScript 声明和 CSS；React、React DOM 由应用提供，当前面向 React 19。普通应用安装包不需要本仓库的预览源码和测试依赖。不需要公开到 npm。

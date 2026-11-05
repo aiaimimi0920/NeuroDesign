@@ -4,20 +4,28 @@
 
 ## 本地依赖（当前方式）
 
-设计系统检出在 `C:\Users\Public\nas_home\AwesomeDesignMD`，两个应用位于 `C:\Users\Public\nas_home\AI\GameEditor\Neuro\Gateway` 和 `Loom`。它们的 `apps/desktop/package.json` 引用：
+设计系统检出在 `C:\Users\Public\nas_home\NeuroDesign`，两个应用位于 `C:\Users\Public\nas_home\AI\GameEditor\Neuro\Gateway` 和 `Loom`。它们的 `apps/desktop/package.json` 引用：
 
 ```json
-"@neuro/ui": "file:../../../../../../AwesomeDesignMD/packages/react/neuro-ui"
+"@neuro/ui": "file:../../../../../../NeuroDesign/packages/react/neuro-ui"
 ```
 
-先安装设计系统的开发依赖。在应用的 `apps/desktop` 目录运行：
+先在设计系统根目录使用 npm 11 安装开发依赖。检出目录改名后也应运行 `npx --yes npm@11 install --ignore-scripts --prefer-offline --no-audit --no-fund`，由 npm 修复根 `node_modules` 的 workspace 链接；`@neuro/ui` 和 `@neuro/preview` 应分别解析到当前目录的 `packages/react/neuro-ui` 和 `apps/react/neuro-preview`，不能仍指向旧检出目录。
+
+首次接入或本地 `file:` 路径变化时，先在各应用的 `apps/desktop` 目录执行：
+
+```powershell
+npx --yes npm@11 install --install-links --ignore-scripts --prefer-offline --no-audit --no-fund @neuro/ui@file:../../../../../../NeuroDesign/packages/react/neuro-ui
+```
+
+这一步通过 npm 更新 lockfile 和实际安装地址；应核对 manifest 的依赖、lockfile 根依赖及 `packages["node_modules/@neuro/ui"].resolved` 一致，并保留其他包的锁定版本。仅路径变化时包元数据可能相同，不能用 `ui:sync` 代替安装和锁文件更新。随后日常同步运行：
 
 ```powershell
 npx --yes npm@11 run ui:sync
 npm run typecheck
 ```
 
-应用的 `ui:sync` 脚本显式使用 `node ../../../../../../AwesomeDesignMD/scripts/sync-consumer.mjs --package @neuro/ui`，只构建选定的 React 主题库及必要共享依赖，不构建其他主题、预览或原生组件。同步比较全部分发文件与包元数据，按需刷新本地包，校验 React / React DOM 唯一及 Radix 焦点/弹层上下文共享。`.npmrc` 固定 `install-links=true`，消费已构建副本而非链接开发仓库的 React；不要同时运行其他 npm 安装或构建。
+应用的 `ui:sync` 脚本显式使用 `node ../../../../../../NeuroDesign/scripts/sync-consumer.mjs --package @neuro/ui`，只构建选定的 React 主题库及必要共享依赖，不构建其他主题、预览或原生组件。同步比较全部分发文件与包元数据，按需刷新本地包，校验 React / React DOM 唯一及 Radix 焦点/弹层上下文共享。`.npmrc` 固定 `install-links=true`，消费已构建副本而非链接开发仓库的 React；不要同时运行其他 npm 安装或构建。
 
 组件源码改动只同步构建产物，不卸载或重装应用的其他依赖。包版本、依赖或导出元数据变化时由 npm 安装；如果 npm 仍保留同版本旧元数据，同步会明确失败，必须递增包版本后重新安装，不能把依赖不匹配伪装成已同步。
 

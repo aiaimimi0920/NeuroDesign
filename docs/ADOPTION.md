@@ -2,7 +2,7 @@
 
 目标：Gateway 与 Loom 的通用表现和交互只维护在 `@neuro/ui`。业务字段、权限、API、任务生命周期、持久化、原生窗口和图形画布仍由应用维护。
 
-工作目录均为本地 C 盘：设计系统 `C:\Users\Public\nas_home\AwesomeDesignMD`；应用位于 `C:\Users\Public\nas_home\AI\GameEditor\Neuro\Gateway` 和 `Loom`。下列应用源码路径相对各自的 `apps/desktop/src`。
+工作目录均为本地 C 盘：设计系统 `C:\Users\Public\nas_home\NeuroDesign`；应用位于 `C:\Users\Public\nas_home\AI\GameEditor\Neuro\Gateway` 和 `Loom`。下列应用源码路径相对各自的 `apps/desktop/src`。
 
 ## 判定标准
 
