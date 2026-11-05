@@ -1,0 +1,72 @@
+/* Atlas layout, not a second set of component tokens. */
+.atlas { max-width: 1280px; margin: auto; padding: 32px 28px 48px; }
+.atlas-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.atlas-header h1 { margin: 8px 0 10px; }
+.density-label { display: grid; gap: 4px; justify-items: end; font-size: 11px; color: var(--muted); }
+.density-label strong { color: var(--signal); font: 500 24px var(--mono); }
+.atlas-nav { display: flex; flex-wrap: wrap; gap: 16px; padding: 14px 0 24px; }
+.atlas-nav a { color: var(--muted); font-size: 12px; text-decoration: none; }
+.atlas-nav a:hover { color: var(--signal); }
+.specimen { padding-bottom: 30px; scroll-margin-top: 16px; }
+.specimen-heading { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.specimen-heading > span { font: 10px var(--mono); color: var(--signal); }
+.specimen-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.specimen-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.specimen-grid > .panel { display: grid; align-content: start; gap: 16px; }
+.specimen-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--muted); }
+.swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.swatch { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--panel); }
+.swatch i { height: 40px; display: block; background: var(--swatch); border-radius: var(--radius-control); }
+.swatch strong { font-size: 12px; }
+.swatch code { font-size: 11px; color: var(--muted); }
+.swatch small { color: var(--muted); }
+.neutral-strip { display: flex; border: 1px solid var(--line); margin-top: 8px; overflow: hidden; border-radius: var(--radius-control); }
+.neutral-strip span { flex: 1; padding: 12px 6px; text-align: center; background: var(--swatch); font: 10px var(--mono); color: var(--muted); }
+.sample-nav { display: grid; gap: 3px; max-width: 240px; }
+.sample-nav button { justify-content: flex-start; min-height: 30px; font-weight: 500; }
+.sample-nav button[aria-pressed="true"] { box-shadow: inset 2px 0 var(--signal); }
+.tab-content { min-height: 90px; padding-top: 14px; }
+.selection-specimens { margin-top: 12px; }
+.table-wrap { width: 100%; overflow: auto; }
+.long-table { max-height: 250px; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.long-table .specimen-table { min-width: 340px; border-collapse: separate; border-spacing: 0; }
+.long-table th { position: sticky; top: 0; z-index: 2; background: var(--panel); }
+.sample-comparison { margin-top: 12px; }
+.sample-comparison dl { display: flex; flex-wrap: wrap; gap: 16px 40px; margin: 10px 0 0; }
+.sample-comparison dt { font-size: var(--small-size); color: var(--muted); }
+.sample-comparison dd { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; font-family: var(--mono); }
+#process-sample { min-width: 152px; }
+#process-sample .spinner { width: 16px; height: 16px; }
+.specimen-table { border-collapse: collapse; min-width: 420px; width: 100%; font-size: var(--control-size); }
+.specimen-table th { text-align: left; color: var(--muted); font-size: var(--small-size); font-weight: 500; }
+.specimen-table td, .specimen-table th { border-bottom: 1px solid var(--line); padding: 10px 8px; }
+.specimen-table tbody tr:hover { background: var(--hover); }
+.specimen-table tr.selected { background: var(--signal-soft); }
+.specimen-table tr.selected td:first-child { box-shadow: inset 2px 0 var(--signal); }
+.accordion { border-top: 1px solid var(--line); }
+.accordion summary { display: flex; justify-content: space-between; padding: 10px 0; font-weight: 600; }
+.accordion p { padding-bottom: 10px; color: var(--muted); }
+.atlas-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 11px; }
+.otter-strip { display: inline-flex; align-items: center; gap: 3px; padding: 4px 5px; width: fit-content; max-width: 100%; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
+.otter-strip .btn { width: 32px; height: 30px; min-height: 30px; padding: 0; border: 2px solid transparent; border-radius: 5px; background: color-mix(in srgb, var(--control) 94%, var(--text)); }
+.otter-strip .btn[aria-pressed="true"] { outline: 1px solid var(--signal); outline-offset: -3px; color: var(--signal); }
+.otter-strip .btn .icon { width: 22.5px; height: 22.5px; }
+.otter-strip .divider { width: 8px; height: 24px; background: linear-gradient(var(--line), var(--line)) center / 1px 12px no-repeat; }
+.atlas[data-compact="true"] { max-width: 1120px; padding-top: 24px; }
+.atlas[data-compact="true"] .panel { gap: 12px; }
+.atlas[data-compact="true"] .specimen { padding-bottom: 22px; }
+.atlas[data-compact="true"] .specimen-table td { padding-block: 7px; }
+@media (max-width: 800px) {
+  .specimen-grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .atlas { padding: 24px 16px; }
+}
+@media (max-width: 560px) {
+  .atlas { padding: 20px 12px; }
+  .atlas-header { grid-template-columns: 1fr; }
+  .density-label { justify-items: start; }
+  .specimen-grid, .specimen-grid.three { grid-template-columns: 1fr; }
+  .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .specimen-heading { flex-wrap: wrap; }
+  .neutral-strip { flex-wrap: wrap; }
+  .neutral-strip span { flex: 1 0 33%; }
+}

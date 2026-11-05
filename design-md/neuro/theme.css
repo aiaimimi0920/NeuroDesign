@@ -1,0 +1,37 @@
+/* Small-corner defaults with a contextual compact control density. */
+:root {
+  --font: "Bahnschrift", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --body-size: 14px;
+  --small-size: 11px;
+  --control-size: 13px;
+  --page-title: 28px;
+  --section-title: 16px;
+  --button-weight: 800;
+  --control-height: 36px;
+  --small-control: 28px;
+  --control-pad: 12px;
+  --input-pad: 10px 12px;
+  --gap: 12px;
+  --panel-pad: 18px;
+  --notice-pad: 12px;
+  --dialog-pad: 24px;
+  --dialog-blur: 10px;
+  --radius-control: 4px;
+  --radius-input: 8px;
+  --radius-panel: 8px;
+  --panel-shadow: var(--shadow);
+  --switch-width: 38px;
+  --switch-height: 22px;
+  --thumb-size: 14px;
+  --thumb-travel: 16px;
+  --switch-radius: 999px;
+  --thumb-radius: 50%;
+  --menu-height: 30px;
+  --tooltip-bg: var(--focus-surface);
+  --tooltip-ink: var(--focus-ink);
+  --app-rail: 212px;
+  --app-top: 38px;
+  --app-pad: 18px;
+  --asset-row: 54px;
+}
+.switch input::after, .switch input:checked::after { background: var(--focus-surface); }

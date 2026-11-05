@@ -1,0 +1,37 @@
+/* Square primitives, compact property controls, no glass blur. */
+:root {
+  --font: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --body-size: 12px;
+  --small-size: 11px;
+  --control-size: 12px;
+  --page-title: 22px;
+  --section-title: 14px;
+  --button-weight: 600;
+  --control-height: 28px;
+  --small-control: 24px;
+  --control-pad: 8px;
+  --input-pad: 4px 8px;
+  --gap: 8px;
+  --panel-pad: 10px;
+  --notice-pad: 8px;
+  --dialog-pad: 20px;
+  --dialog-blur: 0px;
+  --radius-control: 0px;
+  --radius-input: 0px;
+  --radius-panel: 0px;
+  --panel-shadow: none;
+  --switch-width: 42px;
+  --switch-height: 24px;
+  --thumb-size: 14px;
+  --thumb-travel: 20px;
+  --switch-radius: 0px;
+  --thumb-radius: 0px;
+  --menu-height: 24px;
+  --tooltip-bg: var(--control-hover);
+  --tooltip-ink: var(--text);
+  --app-rail: 144px;
+  --app-top: 30px;
+  --app-pad: 10px;
+  --asset-row: 38px;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "internal-design-systems",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.21.1",
+  "workspaces": ["packages/react/*", "apps/react/*"],
+  "engines": { "node": ">=22", "npm": ">=11" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:neuro": "node scripts/build.mjs --theme neuro",
+    "check:boundaries": "node scripts/check-boundaries.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.cjs && vitest run",
+    "check": "npm run check:boundaries && npm run build && npm run typecheck && npm test",
+    "pack:ui": "npm pack --workspace @neuro/ui"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "esbuild": "^0.25.0",
+    "jsdom": "^26.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
+  }
+}

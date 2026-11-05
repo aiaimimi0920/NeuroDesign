@@ -1,46 +1,35 @@
-name: Design MD Request
-description: Request a DESIGN.md generated from a website
-title: "DESIGN.md request"
+name: 主题规范反馈
+description: 记录主题规范或交互预览的问题
+title: "主题反馈："
 labels: ["design-md"]
 
 body:
   - type: markdown
     attributes:
       value: |
-        Fill out the form below to request a DESIGN.md generation for your website.
-  - type: input
-    id: website
-    attributes:
-      label: Website URL
-      description: The website you want us to generate DESIGN.md for
-      placeholder: https://example.com
-    validations:
-      required: true
-
-  - type: input
-    id: email
-    attributes:
-      label: Delivery Email
-      description: Email address where we should send the generated DESIGN.md
-      placeholder: you@example.com
-    validations:
-      required: true
-
+        请描述现有主题中的具体问题，不需要提交网站生成请求或联系方式。
   - type: dropdown
-    id: priority
+    id: theme
     attributes:
-      label: Do you want to prioritize your DESIGN.md generation request?
-      description: We have limited bandwidth across our open-source projects. For same-day delivery, you can prioritize your request at [getdesign.md/request](https://getdesign.md/request).
+      label: 主题
       options:
-        - "No"
-        - "Yes, I'll prioritize at getdesign.md/request"
+        - neuro
+        - neuro-mini
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: 具体位置
+      description: 文档章节、控件或页面
     validations:
       required: true
 
   - type: textarea
     id: details
     attributes:
-      label: Additional Details (optional)
-      description: Anything else you'd like us to know about this request
+      label: 问题与期望
+      description: 说明当前表现、期望规则，以及必要的复现步骤或截图
     validations:
-      required: false
+      required: true

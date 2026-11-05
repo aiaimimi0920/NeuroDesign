@@ -1,25 +1,35 @@
-# Contributing to Awesome Design MD
+# 设计系统维护约定
 
-Thanks for contributing.
+本仓库独立维护声明层和标准实现层，不接受或生成第三方网站主题集合，不受上游集合目录结构约束。
 
-This repository is a curated collection of DESIGN.md files extracted from popular websites. Each file captures a site's complete visual language in a format any AI agent can read.
+## 设计规范
 
-## How to Contribute
+- 每个主题的 `DESIGN.md` 与 `DESIGN.zh-CN.md` 表达相同规则，独立可用，不要求阅读另一主题或本地来源项目。
+- 只记录视觉与交互要求，不写来源推导、项目提交号、审批记录、产品定位或开发历史。
+- 配色、尺寸、状态、选择稳定性、文案和可访问性规则应明确可执行；不把预览业务、样本参数或布局升级为主题必选项。
+- 修改规则时同步中英文及受影响实现，保留用户已确认的设计决定，不顺带引入新业务或框架。neuro-mini 暂只维护声明，不开发标准实现。
+- 全部新增和修改文本使用 UTF-8 无 BOM。
 
-### Improve an Existing DESIGN.md
+## 实现、预览与说明
 
-If you notice issues with an existing file:
+- 实现放在 `packages/<stack>/<package>`，预览放在 `apps/<stack>/<preview>`。每个主题实现独立依赖、构建和交付；当前 neuro React 包位于 `packages/react/neuro-ui`。
+- 主题只能依赖自身和真实需要的同栈 shared；shared 不依赖主题，实现不依赖预览。不从另一主题整包继承后覆写 CSS，不穿透包的源码路径，不创建汇总全部主题的运行时入口。
+- 根 npm workspace 只包含 React 包和 React 预览；Windows 原生实现使用自己的 Cargo 边界。不同技术栈正式实现可由本仓库维护，不建设跨语言运行时，也不提前创建空实现或共享包。
+- 组件不包含 Tauri、应用 API、业务状态和后台任务。
+- 固定主题，内部引用方统一跟进当前接口；不维护兼容别名、多版本分支或多品牌换肤平台。
+- `apps/react/neuro-preview` 引用真实包入口，不另写展示控件；保持离线可打开，不使用 CDN 或远端字体。原生预览将使用真实原生 Gallery，网页演示不能替代原生交互验证。
+- 使用方法、夹具参数、演示能力和宿主限制记录在各主题的 `README.md`，与主题规范分离。
+- 保留真实反馈、键盘操作、深浅色、窄屏与减少动效支持；选择状态不能导致重排、整表重建或焦点丢失。
+- 历史调查与验证只作为维护记录，不让下游 AI 根据旧来源重新解释当前规则。
 
-1. **Open an issue first** to describe what you'd like to change and get feedback from maintainers
-2. Open the site's `DESIGN.md`
-3. Compare against the live site
-4. Fix incorrect hex values, missing tokens, or weak descriptions
-5. Update the `preview.html` and `preview-dark.html` if your changes affect displayed tokens
-6. Open a PR with before/after rationale
+## 验证
 
+React 范围运行 `npm run check`，以 `--theme` 选择的构建不得包含其他主题。架构测试覆盖合法共享、非法跨主题、独立消费 JS/CSS 和原生目录不进入 npm。新增技术栈必须随实现提供自己的构建、边界及消费验证，不宣称现有 React 检查覆盖所有语言。
 
-We cannot accept DESIGN.md pull requests to maintain the quality of the existing collection.
+文档检查独立性、中英对齐、编码和链接；组件检查选择、错误、键盘/焦点、弹层、复制及卸载清理；打包验证 ESM、类型和样式入口。改变视觉或行为后在真实浏览器验证深浅色、窄屏、几何稳定和 `file://`，不用静态检查或 jsdom 代替布局验收。
 
-## License
+实际应用的依赖替换需在该应用范围中完成并验证，不以本仓库预览通过冒充产品已经迁移。
 
-By contributing, you agree your contributions are provided under the repository license terms.
+## 许可
+
+保留 [LICENSE](LICENSE) 中的许可与版权声明。

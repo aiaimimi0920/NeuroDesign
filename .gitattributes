@@ -1,0 +1,4 @@
+# 构建生成的预览内含第三方样式模板，不改写模板中的空白。
+/design-md/neuro/preview.js linguist-generated=true -whitespace
+/design-md/neuro/preview.css linguist-generated=true
+/design-md/neuro/preview.js.LEGAL.txt linguist-generated=true

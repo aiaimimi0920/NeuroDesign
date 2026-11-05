@@ -1,1 +1,7 @@
 .DS_Store
+node_modules/
+packages/react/*/dist/
+packages/windows-native/**/target/
+apps/windows-native/**/target/
+.tmp/
+*.tgz

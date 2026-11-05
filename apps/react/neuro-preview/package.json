@@ -1,0 +1,8 @@
+{
+  "name": "@neuro/preview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "designSystem": { "kind": "preview", "theme": "neuro", "library": "@neuro/ui" },
+  "dependencies": { "@neuro/ui": "0.1.1" }
+}
